@@ -3,10 +3,10 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('country', {
+  sequelize.define('activity', {
     id: {
-      type: DataTypes.STRING,
-      defaultValue: DataTypes.STRING,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
     },
@@ -14,27 +14,16 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    imageFlag: {
-      type: DataTypes.STRING,
+    dificulty: {
+      type: DataTypes.NUMBER,
       allowNull: false,
     },
-    continent: {
+    duration: {
+      type: DataTypes.DATE,
+    },
+    season: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    capital: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    subregion: {
-      type: DataTypes.STRING,
-    },
-    area: {
-      type: DataTypes.FLOAT,
-    },
-    population: {
-      type: DataTypes.BIGINT,
-      allowNull: false,
-    },
+    }
   });
 };
