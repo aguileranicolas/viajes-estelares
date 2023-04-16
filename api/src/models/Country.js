@@ -15,15 +15,15 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     imageFlag: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
     continent: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
     capital: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
     subregion: {

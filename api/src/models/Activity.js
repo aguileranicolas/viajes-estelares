@@ -14,12 +14,12 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    dificulty: {
-      type: DataTypes.NUMBER,
+    difficulty: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     duration: {
-      type: DataTypes.DATE,
+      type: DataTypes.INTEGER,
     },
     season: {
       type: DataTypes.STRING,
