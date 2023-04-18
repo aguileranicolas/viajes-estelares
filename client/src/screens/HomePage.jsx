@@ -1,6 +1,13 @@
+import React from 'react'
+import CardsContainer from '../components/CardsContainer'
+
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div>
+      <CardsContainer>
+        hola
+      </CardsContainer>
+    </div>
   )
 }
 export default HomePage

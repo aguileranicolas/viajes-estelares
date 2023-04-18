@@ -1,7 +1,9 @@
 .bg-mountain {
   background-image: url('../../assets/images/background/bg-mountain.jpg');
-  width: 100%;
+  background-repeat: round;
+  width: auto;
   height: 100vh;
+
 }
 
 .container {
@@ -22,9 +24,6 @@
   border-radius: 10px;
   padding: 4%;
 }
-
-
-
 
 .landingFlex {
   display: flex;
