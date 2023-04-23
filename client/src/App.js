@@ -7,6 +7,7 @@ import DetailPage from '../src/screens/DetailPage'
 import FormPage from '../src/screens/FormPage'
 import HomePage from './screens/HomePage'
 import { NavBar } from './components/NavBar'
+import ActivitiesPage from './screens/ActivitiesPage'
 
 function App() {
   return (
@@ -16,8 +17,8 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/countries' element={<HomePage />} />
         <Route path='/countries/:idPais' element={<DetailPage />} />
-        <Route path='/detailPage' element={<DetailPage />} />
         <Route path='/FormPage' element={<FormPage />} />
+        <Route path='/activities' element={<ActivitiesPage />} />
       </Routes>
     </>
   )

@@ -1,27 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import countryMock from '../mocks/country_mock.json' 
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { cleanCountry, getCountryById } from '../redux/actions';
+//import CardDetail from '../components/CardDetail';
+import { useSelector } from "react-redux"
+//import countryMock from '../mockups/country_mock.json'
 import './styles/detailPage.css'
- import { Link } from 'react-router-dom';
-
-
-
 
 const DetailPage = () => {
- /*  const { id } = useParams();
-  useEffect(() => {
-    const selectedCountry = countries.find(c => c.id === id);
-    setCountry(selectedCountry);
-  }, [countries, id]);
+  const { idPais } = useParams();
+  const dispatch = useDispatch();
+  const country = useSelector(state => state.countryById)
 
-  if (!country) {
-    return <div>Loading...</div>;
-  } */
-  const country = countryMock[0]
+  useEffect(() => {
+    dispatch(getCountryById(idPais))
+  
+    return () => {
+     dispatch(cleanCountry())
+    }
+  }, [dispatch, idPais])
+
+  //const country = countryMock[0]
+  //console.log(country)
+
   return (
-    <div className="Detail-Container">
+    <>
+      <div className="Detail-Container">
       <div className='Card-Info'>
-      <img src={country.imageFlag[1]} alt="" />
+      <img src={country?.imageFlag[1]} alt="" />
       <div className="countryInfo">
         <h2 className='detail-h2'>{country.name}</h2>
         <h3 className='detail-h3'> Capital: {country.capital}</h3>
@@ -49,7 +55,8 @@ const DetailPage = () => {
       </div>
       </div>
     </div>
-  );
+    </>
+  )
 }
 
 export default DetailPage;

@@ -6,17 +6,28 @@ import TravelIcon from './icons/TravelIcon'
 const NavBar = () => {
   return (
     <>
-      <nav className='nav'>
-        <NavLink to='/'><TravelIcon /></NavLink>
-        <ul className='ulFlex'>
-          <li className='navLi'>
-            <NavLink to='/countries'>
-              <h3 className='navText'>Countries</h3>
+      <nav className="nav">
+        <NavLink to="/">
+          <TravelIcon />
+        </NavLink>
+        <label htmlFor="" style={{ color: 'white' }}>
+          BUSCAR PAIS
+        </label>
+        <input type="search"></input>
+        <ul className="ulFlex">
+          <li className="navLi">
+            <NavLink to="/countries">
+              <h3 className="navText">Countries</h3>
             </NavLink>
           </li>
-          <li className='navLi'>
-            <NavLink to='/'>
-              <h3 className='navText'>About</h3>
+          <li className="navLi">
+            <NavLink to="/activities">
+              <h3 className="navText">Activities</h3>
+            </NavLink>
+          </li>
+          <li className="navLi">
+            <NavLink to="/">
+              <h3 className="navText">About</h3>
             </NavLink>
           </li>
         </ul>

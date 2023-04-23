@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CardsContainer from '../components/CardsContainer'
+import { getAllCountries, getActivities } from '../redux/actions'
+import Filters from '../components/Filters'
+import { useDispatch } from 'react-redux'
 
 const HomePage = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllCountries())
+    dispatch(getActivities())
+  }, [dispatch])
+
   return (
     <div>
-      <CardsContainer>
-        hola
-      </CardsContainer>
+      <Filters />
+      <CardsContainer>hola</CardsContainer>
     </div>
   )
 }
