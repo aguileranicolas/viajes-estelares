@@ -1,0 +1,86 @@
+.Detail-Container {
+
+  background-color: rgb(67, 65, 65);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+}
+
+.Card-Info {
+  color: rgba(0, 0, 0, 0.8);
+  background-color: rgb(255, 255, 255);
+
+  border-radius: 10px;
+  align-self: center;
+
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-h2 {
+  font-size: 25pt;
+  align-self: center;
+  font-weight: 800%;
+
+}
+
+.detail-h3 {
+  font-size: 20pt;
+  align-self: center;
+  font-weight: 50%;
+}
+
+.detail-h4 {
+  font-size: 20pt;
+  align-self: center;
+}
+
+.p-Subregion {
+  font-size: 20pt;
+  align-self: center;
+  font-weight: 550;
+}
+
+.p-Area {
+  font-size: 20pt;
+  align-self: center;
+  font-weight: 550;
+}
+
+.p-Population {
+  font-size: 20pt;
+  align-self: center;
+  font-weight: 550;
+
+}
+
+.buttonInfoDS {
+
+  font-size: 110%;
+  border-radius: 10px;
+  padding: 3%;
+  margin-top: 10px;
+  font-weight: 550;
+  width: 100%;
+  font-size: 20pt;
+  align-self: center;
+
+}
+
+.ActivitiesD {
+  font-size: 20pt;
+  font-weight: 550;
+  align-self: center;
+
+}
+
+.ActivityD {
+  font-size: 15pt;
+  font-weight: 700;
+  align-self: center;
+
+}
