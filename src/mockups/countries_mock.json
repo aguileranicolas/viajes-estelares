@@ -1,0 +1,202 @@
+[
+  {
+    "id": "ATF",
+    "name": "French Southern and Antarctic Lands",
+    "imageFlag": [
+      "https://flagcdn.com/tf.svg",
+      "https://flagcdn.com/w320/tf.png"
+    ],
+    "continent": [
+      "Antarctica"
+    ],
+    "capital": [
+      "Port-aux-Français"
+    ],
+    "subregion": null,
+    "area": 7747,
+    "population": "400",
+    "createdAt": "2023-04-18T19:42:05.878Z",
+    "updatedAt": "2023-04-18T19:42:05.878Z",
+    "activities": []
+  },
+  {
+    "id": "COL",
+    "name": "Colombia",
+    "imageFlag": [
+      "https://flagcdn.com/co.svg",
+      "https://flagcdn.com/w320/co.png"
+    ],
+    "continent": [
+      "South America"
+    ],
+    "capital": [
+      "Bogotá"
+    ],
+    "subregion": "South America",
+    "area": 1141748,
+    "population": "50882884",
+    "createdAt": "2023-04-18T19:42:05.879Z",
+    "updatedAt": "2023-04-18T19:42:05.879Z",
+    "activities": []
+  },
+  {
+    "id": "VEN",
+    "name": "Venezuela",
+    "imageFlag": [
+      "https://flagcdn.com/ve.svg",
+      "https://flagcdn.com/w320/ve.png"
+    ],
+    "continent": [
+      "South America"
+    ],
+    "capital": [
+      "Caracas"
+    ],
+    "subregion": "South America",
+    "area": 916445,
+    "population": "28435943",
+    "createdAt": "2023-04-18T19:42:05.874Z",
+    "updatedAt": "2023-04-18T19:42:05.874Z",
+    "activities": []
+  },
+  {
+    "id": "TJK",
+    "name": "Tajikistan",
+    "imageFlag": [
+      "https://flagcdn.com/tj.svg",
+      "https://flagcdn.com/w320/tj.png"
+    ],
+    "continent": [
+      "Asia"
+    ],
+    "capital": [
+      "Dushanbe"
+    ],
+    "subregion": "Central Asia",
+    "area": 143100,
+    "population": "9537642",
+    "createdAt": "2023-04-18T19:42:05.879Z",
+    "updatedAt": "2023-04-18T19:42:05.879Z",
+    "activities": []
+  },
+  {
+    "id": "IRQ",
+    "name": "Iraq",
+    "imageFlag": [
+      "https://flagcdn.com/iq.svg",
+      "https://flagcdn.com/w320/iq.png"
+    ],
+    "continent": [
+      "Asia"
+    ],
+    "capital": [
+      "Baghdad"
+    ],
+    "subregion": "Western Asia",
+    "area": 438317,
+    "population": "40222503",
+    "createdAt": "2023-04-18T19:42:05.878Z",
+    "updatedAt": "2023-04-18T19:42:05.878Z",
+    "activities": []
+  },
+  {
+    "id": "CIV",
+    "name": "Ivory Coast",
+    "imageFlag": [
+      "https://flagcdn.com/ci.svg",
+      "https://flagcdn.com/w320/ci.png"
+    ],
+    "continent": [
+      "Africa"
+    ],
+    "capital": [
+      "Yamoussoukro"
+    ],
+    "subregion": "Western Africa",
+    "area": 322463,
+    "population": "26378275",
+    "createdAt": "2023-04-18T19:42:05.874Z",
+    "updatedAt": "2023-04-18T19:42:05.874Z",
+    "activities": []
+  },
+  {
+    "id": "CHE",
+    "name": "Switzerland",
+    "imageFlag": [
+      "https://flagcdn.com/ch.svg",
+      "https://flagcdn.com/w320/ch.png"
+    ],
+    "continent": [
+      "Europe"
+    ],
+    "capital": [
+      "Bern"
+    ],
+    "subregion": "Western Europe",
+    "area": 41284,
+    "population": "8654622",
+    "createdAt": "2023-04-18T19:42:05.877Z",
+    "updatedAt": "2023-04-18T19:42:05.877Z",
+    "activities": []
+  },
+  {
+    "id": "BRA",
+    "name": "Brazil",
+    "imageFlag": [
+      "https://flagcdn.com/br.svg",
+      "https://flagcdn.com/w320/br.png"
+    ],
+    "continent": [
+      "South America"
+    ],
+    "capital": [
+      "Brasília"
+    ],
+    "subregion": "South America",
+    "area": 8515767,
+    "population": "212559409",
+    "createdAt": "2023-04-18T19:42:05.870Z",
+    "updatedAt": "2023-04-18T19:42:05.870Z",
+    "activities": []
+  },
+  {
+    "id": "MUS",
+    "name": "Mauritius",
+    "imageFlag": [
+      "https://flagcdn.com/mu.svg",
+      "https://flagcdn.com/w320/mu.png"
+    ],
+    "continent": [
+      "Africa"
+    ],
+    "capital": [
+      "Port Louis"
+    ],
+    "subregion": "Eastern Africa",
+    "area": 2040,
+    "population": "1265740",
+    "createdAt": "2023-04-18T19:42:05.880Z",
+    "updatedAt": "2023-04-18T19:42:05.880Z",
+    "activities": []
+  },
+  {
+    "id": "CMR",
+    "name": "Cameroon",
+    "imageFlag": [
+      "https://flagcdn.com/cm.svg",
+      "https://flagcdn.com/w320/cm.png"
+    ],
+    "continent": [
+      "Africa"
+    ],
+    "capital": [
+      "Yaoundé"
+    ],
+    "subregion": "Middle Africa",
+    "area": 475442,
+    "population": "26545864",
+    "createdAt": "2023-04-18T19:42:05.881Z",
+    "updatedAt": "2023-04-18T19:42:05.881Z",
+    "activities": []
+  }
+]
