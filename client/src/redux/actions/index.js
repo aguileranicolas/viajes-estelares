@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, CLEAN_COUNTRY, GET_ACTIVITIES, CREATE_ACTIVITY, FILTER_BY_CONTINENT, SORT_BY_NAME, SORT_BY_POPULATION, SEARCH_BY_NAME } from '../action-type';
+import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, CLEAN_COUNTRY, GET_ACTIVITIES, CREATE_ACTIVITY, FILTER_BY_CONTINENT, SORT_BY_NAME, SORT_BY_POPULATION, SEARCH_BY_NAME, FILTER_BY_ACTIVITY, RESET_FILTERS } from '../action-type';
 
 
 // Nuestras actions (action creators) devolverán un paquete de actions que nuestro reducer recibirá. 
@@ -112,9 +112,31 @@ const searchByName = (search) => {
   }
 }
 
+const filterCountriesByActivitity = (activity) => {
+  return async function (dispatch) {
+    try {
+      return dispatch({ type: FILTER_BY_ACTIVITY, payload: activity })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
+const resetFilters = () => {
+  return async function (dispatch) {
+    try {
+      return dispatch({ type: RESET_FILTERS })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
 
 
-export { getAllCountries, getCountryById, cleanCountry, getActivities, postActivity, filterCountriesByContinent, sortByName, sortByPopulation, searchByName }
+
+
+
+export { getAllCountries, getCountryById, cleanCountry, getActivities, postActivity, filterCountriesByContinent, sortByName, sortByPopulation, searchByName, filterCountriesByActivitity, resetFilters }
 
 
 

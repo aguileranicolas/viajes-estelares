@@ -1,4 +1,4 @@
-import { CLEAN_COUNTRY, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, GET_ACTIVITIES, CREATE_ACTIVITY, FILTER_BY_CONTINENT, SORT_BY_NAME, SORT_BY_POPULATION, SEARCH_BY_NAME } from '../action-type';
+import { CLEAN_COUNTRY, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, GET_ACTIVITIES, CREATE_ACTIVITY, FILTER_BY_CONTINENT, SORT_BY_NAME, SORT_BY_POPULATION, SEARCH_BY_NAME, FILTER_BY_ACTIVITY, RESET_FILTERS } from '../action-type';
 
 const initialState = {
   countries: [],
@@ -23,7 +23,7 @@ export const rootReducer = (state = initialState, action) => {
     case GET_ALL_COUNTRIES:
       return {
         ...state,
-        countries: action.payload,
+        countries: [...action.payload].sort((a, b) => a.name.localeCompare(b.name)),
         allCountries: action.payload
       }
     case GET_COUNTRY_BY_ID:
@@ -79,6 +79,25 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         countries: action.payload
+      }
+    case FILTER_BY_ACTIVITY:
+      const activityFound = state.activities.find(activity => activity.name === action.payload)
+      console.log(activityFound)
+      const countriesFilteredByActivity = action.payload === 'All'
+        ? [...state.countries]
+        : [...state.countries].filter(country =>
+          country.activities.some(activity =>
+            activity.name === activityFound.name && activity.type === activityFound.type
+          )
+        );
+      return {
+        ...state,
+        countries: countriesFilteredByActivity
+      }
+    case RESET_FILTERS:
+      return {
+        ...state,
+        countries: state.allCountries
       }
 
     default:

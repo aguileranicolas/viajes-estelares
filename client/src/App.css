@@ -38,10 +38,3 @@
     transform: rotate(360deg);
   }
 }
-
-.navBar {
-  background-color: black;
-  width: 100%;
-  height: 90px;
-  color: white;
-}
