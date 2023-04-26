@@ -45,8 +45,12 @@ const Filters = () => {
 			<div className='filterGroup'>
 				<span className='filterTex'>Sort By Name: </span>
 				<select className='filtersButton' onChange={e => handleOrderByName(e)}>
-					<option value='ASC'>A-Z</option>
-					<option value='DESC'>Z-A</option>
+					<option key={'A-Z'} value='ASC'>
+						A-Z
+					</option>
+					<option key={'Z-A'} value='DESC'>
+						Z-A
+					</option>
 				</select>
 				<div className='filterGroup'></div>
 			</div>
@@ -56,11 +60,15 @@ const Filters = () => {
 					className='filtersButton'
 					onChange={e => handleOrderByPopulation(e)}
 				>
-					<option value='' disabled>
+					<option key={'Population'} value='' disabled>
 						Population
 					</option>
-					<option value='ASC'>Major Population</option>
-					<option value='DESC'>Minor Population</option>
+					<option key={'ASC'} value='ASC'>
+						Major Population
+					</option>
+					<option key={'DESC'} value='DESC'>
+						Minor Population
+					</option>
 				</select>
 			</div>
 			<div className='filterGroup'>
@@ -69,13 +77,20 @@ const Filters = () => {
 					className='filtersButton'
 					onChange={e => handleFilterContinent(e)}
 				>
-					<option className='filtersButton' value='continent' disabled>
-						Continente
+					<option
+						key={'continent'}
+						className='filtersButton'
+						value='continent'
+						disabled
+					>
+						Continent
 					</option>
 					{allContinents.length > 0 &&
 						allContinents?.map(continent => (
 							<>
-								<option value={continent}>{continent}</option>
+								<option key={continent} value={continent}>
+									{continent}
+								</option>
 							</>
 						))}
 				</select>
@@ -92,7 +107,9 @@ const Filters = () => {
 					{allActivities.length > 0 &&
 						allActivities?.map(activity => (
 							<>
-								<option value={activity.name}>{activity.name}</option>
+								<option key={activity.name} value={activity.name}>
+									{activity.name}
+								</option>
 							</>
 						))}
 				</select>
