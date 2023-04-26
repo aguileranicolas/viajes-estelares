@@ -8,7 +8,7 @@ const LandingPage = () => {
 			<div className='backgroundImage'>
 				<div className='container whiteShadowContainer'>
 					<h1 className='heading1'>Welcome to Star Travel</h1>
-					<NavLink to='/Countries'>
+					<NavLink to='/countries'>
 						<button className='button'>Enter</button>
 					</NavLink>
 				</div>
