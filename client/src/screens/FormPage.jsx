@@ -9,12 +9,13 @@ const FormPage = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const countries = useSelector(state => state.countries)
+	const [hasErrors, setHasErrors] = useState()
 	const [activity, setActivity] = useState({
 		name: '',
 		difficulty: 0,
 		duration: 0,
 		season: '',
-		countryId: ''
+		countryId: []
 	})
 	const [errors, setErrors] = React.useState({
 		name: null,
@@ -27,17 +28,31 @@ const FormPage = () => {
 	const handleSubmit = e => {
 		e.preventDefault()
 		if (
-			errors?.name?.length > 0 ||
-			errors?.difficulty?.length > 0 ||
-			errors?.duration?.length > 0 ||
-			errors?.season?.length > 0 ||
-			errors?.countryId?.length > 0
+			errors?.name === null ||
+			errors?.difficulty === null ||
+			errors?.duration === null ||
+			errors?.season === null ||
+			errors?.countryId === null
 		) {
 			alert('Debes corregir tus errores')
 			return
 		}
 		dispatch(postActivity(activity))
 		navigate('/countries')
+	}
+
+	const onChangeSelected = e => {
+		e.preventDefault()
+		setActivity({
+			...activity,
+			countryId: [...activity.countryId, e.target.value]
+		})
+		setErrors(
+			validate({
+				...activity,
+				[e.target.name]: e.target.value
+			})
+		)
 	}
 
 	const onChange = e => {
@@ -52,6 +67,14 @@ const FormPage = () => {
 				[e.target.name]: e.target.value
 			})
 		)
+	}
+
+	const onDeleteCountrySelected = (e, countryId) => {
+		e.preventDefault()
+		setActivity({
+			...activity,
+			countryId: activity.countryId.filter(country => country !== countryId)
+		})
 	}
 
 	return (
@@ -227,7 +250,7 @@ const FormPage = () => {
 								className='filtersSelect'
 								type='select'
 								name='countryId'
-								onChange={onChange}
+								onChange={onChangeSelected}
 							>
 								<option value=''>Selecciona un país</option>
 								{countries &&
@@ -248,6 +271,20 @@ const FormPage = () => {
 								{errors.countryId}
 							</p>
 						)}
+						<div className='countriesSelected'>
+							{countries
+								.filter(country => activity.countryId.includes(country.id))
+								.map(country => (
+									<p>
+										{country.name}{' '}
+										<button
+											onClick={e => onDeleteCountrySelected(e, country.id)}
+										>
+											x
+										</button>
+									</p>
+								))}
+						</div>
 
 						<button
 							type='submit'
