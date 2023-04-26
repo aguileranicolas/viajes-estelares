@@ -1,10 +1,12 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import TravelIcon from './icons/TravelIcon'
 import SearchBar from './SearchBar'
 import '../style.css'
 
 const NavBar = () => {
+	const location = useLocation()
+
 	return (
 		<>
 			<nav className='navBar'>
@@ -13,9 +15,7 @@ const NavBar = () => {
 						<TravelIcon />
 					</NavLink>
 				</div>
-				<div>
-					<SearchBar />
-				</div>
+				<div>{location.pathname === '/countries' && <SearchBar />}</div>
 				<ul className='navigationButtonsContainer'>
 					<li className='navigationButton'>
 						<NavLink to='/countries'>

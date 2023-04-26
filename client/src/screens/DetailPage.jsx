@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import { cleanCountry, getCountryById } from '../redux/actions'
 import { useSelector } from 'react-redux'
 import '../style.css'
-//import countryMock from '../mockups/country_mock.json'
 
 const DetailPage = () => {
 	const { idPais } = useParams()
@@ -18,9 +17,6 @@ const DetailPage = () => {
 			dispatch(cleanCountry())
 		}
 	}, [dispatch, idPais])
-
-	//const country = countryMock[0]
-	//console.log(country)
 
 	return (
 		<>
@@ -62,7 +58,7 @@ const DetailPage = () => {
 										</h4>
 									</>
 								)}
-								<Link c to='/FormPage'>
+								<Link to='/FormPage'>
 									<button
 										className='buttonInfoDetail'
 										onClick={() => './FormPage'}
