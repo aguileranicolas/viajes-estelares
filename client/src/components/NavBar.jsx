@@ -23,7 +23,7 @@ const NavBar = () => {
 						</NavLink>
 					</li>
 					<li className='navigationButton'>
-						<NavLink to='/activities'>
+						<NavLink to='/formPage'>
 							<h3 className='navText'>Activities</h3>
 						</NavLink>
 					</li>
