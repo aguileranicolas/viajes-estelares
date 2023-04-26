@@ -97,7 +97,7 @@ export const rootReducer = (state = initialState, action) => {
     case RESET_FILTERS:
       return {
         ...state,
-        countries: state.allCountries
+        countries: state.allCountries.sort((a, b) => a.name.localeCompare(b.name))
       }
 
     default:
