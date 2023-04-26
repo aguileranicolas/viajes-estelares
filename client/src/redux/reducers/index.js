@@ -84,13 +84,10 @@ export const rootReducer = (state = initialState, action) => {
       };
 
     case SEARCH_BY_NAME:
-      const query = action.payload.toLowerCase();
-      const countriesFilteredByName = query === '' ? state.allCountries : state.allCountries.filter(country => country.name.toLowerCase().includes(query));
-      const combinedFilterAndSortByName = [...countriesFilteredByName].sort((a, b) => a.name.localeCompare(b.name));
       return {
         ...state,
-        countries: combinedFilterAndSortByName
-      };
+        countries: action.payload
+      }
 
     case SORT_BY_NAME:
       const countriesOrderedByName = [...state.countries].sort((a, b) => a.name.localeCompare(b.name));
