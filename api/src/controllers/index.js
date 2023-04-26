@@ -52,29 +52,31 @@ const getCountryByName = async (name) => {
 
 
 const postActivity = async ({ name, difficulty, duration, season, countryId }) => {
-  const country = await Country.findByPk(countryId);
-
-  if (!country) {
-    return null;
-  } else {
-    const activityExists = await Activity.findOne({ where: { name } });
-
-    if (activityExists) {
-      return await country.addActivity(activity);
+  const countries = await Country.findAll({
+    where: {
+      id: countryId
     }
+  });
 
-    const activity = await Activity.create({
+  if (countries.length <= 0) {
+    return null;
+  }
+
+  const [activity] = await Activity.findOrCreate({
+    where: { name },
+    defaults: {
       name: name,
       difficulty: difficulty,
       duration: duration,
       season: season
-    });
+    }
+  });
 
-    await country.addActivity(activity);
+  await Promise.all(countries.map(country => country.addActivity(activity)));
 
-    return activity;
-  }
+  return activity;
 };
+
 
 
 
