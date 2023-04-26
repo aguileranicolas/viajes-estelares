@@ -107,14 +107,19 @@ const Filters = () => {
 					<option key={'All'} className='filtersButton' value='All'>
 						All
 					</option>
-					{allActivities.length > 0 &&
+					{allActivities.length > 0 ? (
 						allActivities?.map(activity => (
 							<>
 								<option key={activity.name} value={activity.name}>
 									{activity.name}
 								</option>
 							</>
-						))}
+						))
+					) : (
+						<option key={'Without activities'} disabled>
+							{'Without activities'}
+						</option>
+					)}
 				</select>
 			</div>
 			<button className='filtersButton' onClick={handleOnReset}>
