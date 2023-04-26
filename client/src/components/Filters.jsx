@@ -6,8 +6,10 @@ import {
 	sortByPopulation
 } from '../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Filters = () => {
+	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const allActivities = useSelector(state => state.activities)
 	const allContinents = [
@@ -38,6 +40,7 @@ const Filters = () => {
 
 	const handleOnReset = () => {
 		dispatch(resetFilters())
+		navigate('/countries')
 	}
 
 	return (
@@ -101,7 +104,7 @@ const Filters = () => {
 					className='filtersButton'
 					onChange={e => handleFilterActivity(e)}
 				>
-					<option className='filtersButton' value='All'>
+					<option key={'All'} className='filtersButton' value='All'>
 						All
 					</option>
 					{allActivities.length > 0 &&

@@ -20,85 +20,93 @@ const initialState = {
 export const rootReducer = (state = initialState, action) => {
 
   switch (action.type) {
+
     case GET_ALL_COUNTRIES:
       return {
         ...state,
-        countries: [...action.payload].sort((a, b) => a.name.localeCompare(b.name)),
-        allCountries: action.payload
-      }
+        allCountries: action.payload,
+        countries: action.payload
+      };
+
     case GET_COUNTRY_BY_ID:
       return {
         ...state,
         countryById: action.payload
-      }
+      };
+
     case CLEAN_COUNTRY:
       return {
         ...state,
         countryById: action.payload
-      }
+      };
+
     case GET_ACTIVITIES:
       return {
         ...state,
         activities: action.payload
-      }
+      };
+
     case CREATE_ACTIVITY:
       return {
         ...state,
         activities: [...state.activities, action.payload]
-      }
-
-    case FILTER_BY_CONTINENT:
-      const allCountries = state.allCountries
-      const countriesFiltered = action.payload === 'All' ? allCountries : allCountries.filter(country => country.continent[0] === action.payload)
-      return {
-        ...state,
-        countries: countriesFiltered
-      }
-
-    case SORT_BY_NAME:
-      const countriesOrdered = action.payload === 'ASC' ?
-        [...state.countries].sort((a, b) => a.name.localeCompare(b.name)) :
-        action.payload === 'DESC' ? [...state.countries].sort((a, b) => b.name.localeCompare(a.name)) :
-          allCountries;
-      return {
-        ...state,
-        countries: countriesOrdered
       };
 
-    case SORT_BY_POPULATION:
-      const populationOrdered = action.payload === 'ASC' ?
-        [...state.countries].sort((a, b) => Number(a.population) - Number(b.population)) :
-        action.payload === 'DESC' ? [...state.countries].sort((a, b) => Number(b.population) - Number(a.population)) :
-          allCountries;
+    case FILTER_BY_CONTINENT:
+      const allCountries = state.allCountries;
+      const countriesFilteredByContinent = action.payload === 'All' ? allCountries : allCountries.filter(country => country.continent[0] === action.payload);
+      const combinedFilterAndSortByContinent = [...countriesFilteredByContinent].sort((a, b) => a.name.localeCompare(b.name));
       return {
         ...state,
-        countries: populationOrdered
+        countries: combinedFilterAndSortByContinent
+      };
+
+    case FILTER_BY_ACTIVITY:
+      const activity = state.activities.find(activity => activity.name === action.payload);
+      const countriesFilteredByActivity = action.payload === 'All'
+        ? state.allCountries
+        : state.allCountries.filter(country =>
+          country.activities.some(a =>
+            a.name === activity.name && a.type === activity.type
+          )
+        );
+      const combinedFilterAndSortByActivity = [...countriesFilteredByActivity].sort((a, b) => a.name.localeCompare(b.name));
+      return {
+        ...state,
+        countries: combinedFilterAndSortByActivity
+      };
+
+    case RESET_FILTERS:
+      const combinedResetFilters = [...state.allCountries].sort((a, b) => a.name.localeCompare(b.name));
+      return {
+        ...state,
+        countries: combinedResetFilters
       };
 
     case SEARCH_BY_NAME:
+      const query = action.payload.toLowerCase();
+      const countriesFilteredByName = query === '' ? state.allCountries : state.allCountries.filter(country => country.name.toLowerCase().includes(query));
+      const combinedFilterAndSortByName = [...countriesFilteredByName].sort((a, b) => a.name.localeCompare(b.name));
       return {
         ...state,
-        countries: action.payload
-      }
-    case FILTER_BY_ACTIVITY:
-      const activityFound = state.activities.find(activity => activity.name === action.payload)
-      console.log(activityFound)
-      const countriesFilteredByActivity = action.payload === 'All'
-        ? [...state.countries]
-        : [...state.countries].filter(country =>
-          country.activities.some(activity =>
-            activity.name === activityFound.name && activity.type === activityFound.type
-          )
-        );
+        countries: combinedFilterAndSortByName
+      };
+
+    case SORT_BY_NAME:
+      const countriesOrderedByName = [...state.countries].sort((a, b) => a.name.localeCompare(b.name));
+      const countriesReversedByName = action.payload === 'DESC' ? countriesOrderedByName.reverse() : countriesOrderedByName;
       return {
         ...state,
-        countries: countriesFilteredByActivity
-      }
-    case RESET_FILTERS:
+        countries: countriesReversedByName
+      };
+
+    case SORT_BY_POPULATION:
+      const countriesOrderedByPopulation = [...state.countries].sort((a, b) => Number(a.population) - Number(b.population));
+      const countriesReversedByPopulation = action.payload === 'DESC' ? countriesOrderedByPopulation.reverse() : countriesOrderedByPopulation;
       return {
         ...state,
-        countries: state.allCountries.sort((a, b) => a.name.localeCompare(b.name))
-      }
+        countries: countriesReversedByPopulation
+      };
 
     default:
       return state;

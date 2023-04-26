@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import TravelIcon from './icons/TravelIcon'
 import SearchBar from './SearchBar'
 import '../style.css'
+import { useDispatch } from 'react-redux'
+import { getActivities, getAllCountries } from '../redux/actions'
 
 const NavBar = () => {
 	const location = useLocation()
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(getAllCountries())
+		dispatch(getActivities())
+	}, [dispatch, location.pathname])
 
 	return (
 		<>
