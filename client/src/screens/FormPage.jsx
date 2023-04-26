@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { postActivity } from '../redux/actions'
 import { useNavigate } from 'react-router-dom'
@@ -9,7 +9,7 @@ const FormPage = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const countries = useSelector(state => state.countries)
-	const [hasErrors, setHasErrors] = useState()
+	const [hasErrors, setHasErrors] = useState(true)
 	const [activity, setActivity] = useState({
 		name: '',
 		difficulty: 0,
@@ -76,6 +76,12 @@ const FormPage = () => {
 			countryId: activity.countryId.filter(country => country !== countryId)
 		})
 	}
+
+	useEffect(() => {
+		if (Object.keys(errors).length === 0) {
+			setHasErrors(false)
+		}
+	}, [errors])
 
 	return (
 		<div className='backgroundImageForm gridForm'>
@@ -290,7 +296,7 @@ const FormPage = () => {
 							type='submit'
 							onClick={handleSubmit}
 							className='submitButton h4'
-							disabled={errors.name === ''}
+							disabled={hasErrors}
 							aria-label='Create Activity button'
 						>
 							Create Activity

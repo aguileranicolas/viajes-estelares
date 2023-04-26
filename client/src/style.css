@@ -621,4 +621,10 @@
   background-color: var(--color-terciario);
   cursor: pointer;
 }
+
+.submitButton:disabled {
+  background-color: rgba(111, 111, 111, 0.5);
+  cursor: not-allowed ;
+  box-shadow: none;
+}
     
