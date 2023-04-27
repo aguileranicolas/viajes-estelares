@@ -26,6 +26,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-shadow: 1px 1px 2px var(--color-texto);
+  
 }
 
 .info-container h2 {
