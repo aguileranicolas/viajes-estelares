@@ -470,7 +470,9 @@
 .label {
   width: 100px;
   color: var(--color-fondo);
-  font-size: 18px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  align-self: center;
 }
 
 .inputForm{
@@ -483,7 +485,7 @@
 /* Estilos para un input del tipo range */
 .inputRange {
   -webkit-appearance: none;
-  width: 200px;
+  width: 510px;
   height: 10px;
   background-color: var(--color-primario);
   border-radius: 5px;
@@ -644,3 +646,40 @@
   box-shadow: none;
 }
     
+.selectCountries{
+  background-color: var(--color-secundario);
+  color: white;
+  border-radius: 5px;
+  width: 510px;
+  text-align: center;
+  font-size: 17px;
+  font-family: 'Roboto', sans-serif;
+  padding: 3px;
+}
+.countriesSelected{
+background-color: azure;
+color: rgb(0, 0, 0);
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+border-radius: 8px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+font-family: 'Roboto', sans-serif;
+align-self: center;
+padding: 5px 15px;
+max-width: 665px;
+cursor: pointer;
+}
+
+.formButton{
+    background-color: var(--color-primario);
+      color: #fff;
+      border-radius: 40%;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      font-size: 17px;
+      border: 1px solid var(--color-terciario);
+      
+}
+      

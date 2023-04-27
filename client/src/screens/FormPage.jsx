@@ -253,7 +253,7 @@ const FormPage = () => {
 							</label>
 							<select
 								id='selectCountry'
-								className='filtersSelect'
+								className='selectCountries'
 								type='select'
 								name='countryId'
 								onChange={onChangeSelected}
@@ -284,6 +284,7 @@ const FormPage = () => {
 									<p>
 										{country.name}{' '}
 										<button
+											className='formButton'
 											onClick={e => onDeleteCountrySelected(e, country.id)}
 										>
 											x
