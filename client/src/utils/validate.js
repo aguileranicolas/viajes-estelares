@@ -18,12 +18,12 @@ export const validate = (activity) => {
   ////////////////////DIFFICULTY/////////////////////////
 
   if (activity.difficulty <= 0 || activity.difficulty >= 6) {
-    errors.difficulty = 'Solo puedes definir una dificultad del 1 al 5'
+    errors.difficulty = 'Necesitas definir una dificultad gradualmente'
   }
 
   ////////////////////DURATION/////////////////////////
   if (activity.duration <= 0 || activity.duration >= 11) {
-    errors.duration = 'Necesitas definir la duracion  del 1 al 5'
+    errors.duration = 'Necesitas definir la duracion  del 1 al 10'
   }
 
   ////////////////////SEASON/////////////////////////
@@ -32,7 +32,7 @@ export const validate = (activity) => {
   }
 
   if (!soloA_Z.test(activity.season)) {
-    errors.season = 'El nombre de la temporada solo puede contener letras de la A a la Z'
+    errors.season = 'Necesitas definir una temporada'
   }
 
   ////////////////////COUNTRYID/////////////////////////

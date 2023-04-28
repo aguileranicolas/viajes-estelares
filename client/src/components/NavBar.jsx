@@ -1,14 +1,28 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import TravelIcon from './icons/TravelIcon'
 import SearchBar from './SearchBar'
 import '../style.css'
-import { useDispatch } from 'react-redux'
-import { getActivities, getAllCountries } from '../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { cleanMessage, getActivities, getAllCountries } from '../redux/actions'
+import Errors from './Errors'
 
-const NavBar = () => {
+export const NavBar = () => {
 	const location = useLocation()
 	const dispatch = useDispatch()
+	const error = useSelector(state => state.error)
+	let shouldShowModal = error.message?.length > 0
+	const [isModalOpen, setIsModalOpen] = useState(false)
+
+	useEffect(() => {
+		setIsModalOpen(true)
+		return () => {
+			setTimeout(() => {
+				setIsModalOpen(false)
+				dispatch(cleanMessage())
+			}, 6000)
+		}
+	}, [shouldShowModal, dispatch])
 
 	useEffect(() => {
 		dispatch(getAllCountries())
@@ -42,8 +56,11 @@ const NavBar = () => {
 					</li>
 				</ul>
 			</nav>
+			{isModalOpen && (
+				<div className='modal'>
+					<Errors type={error.type} message={error.message} />
+				</div>
+			)}
 		</>
 	)
 }
-
-export { NavBar }

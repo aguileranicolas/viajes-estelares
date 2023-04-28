@@ -12,7 +12,7 @@ const router = Router();
 router.get('/', (req, res) => {
   try {
     res.status(200).json({
-      message: '¡Ajusten sus cinturones, que comenzará un viaje estelar!'
+      message: 'Fasten your seatbelts, a stellar ride is about to begin!'
     })
   } catch (error) {
     console.error(error)
@@ -27,7 +27,7 @@ router.get('/countries', async (req, res) => {
     const countriesList = await getAllCountries()
     if (!countriesList.length > 0) {
       res.status(404).send({
-        error: 'No se encontraron paises en la base de datos'
+        error: 'No countries were found in the database'
       })
     } else {
       res.status(200).json(countriesList)
@@ -47,7 +47,7 @@ router.get('/countries/search', async (req, res) => {
     const country = await getCountryByName(name)
     if (!country.length > 0) {
       res.status(404).send({
-        error: `La busqueda no encontro resultados`
+        error: `The search found no results`
       })
     } else {
       res.status(200).json(country)
@@ -67,7 +67,7 @@ router.get('/countries/:idPais', async (req, res) => {
     const country = await getCountry(idPais)
     if (!country) {
       res.status(404).send({
-        error: `No se encontro un pais con el id ${idPais}`
+        error: `A country with the id was not found ${idPais}`
       })
     } else {
       res.status(200).json(country)
@@ -104,7 +104,7 @@ router.get('/activities', async (req, res) => {
     const activitiesList = await getAllActivities()
     if (!activitiesList.length > 0) {
       res.status(404).send({
-        error: 'No se encontraron actividades en la base de datos'
+        error: 'No activities were found in the database'
       })
     } else {
       res.status(200).json(activitiesList)

@@ -1,4 +1,4 @@
-import { CLEAN_COUNTRY, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, GET_ACTIVITIES, CREATE_ACTIVITY, FILTER_BY_CONTINENT, SORT_BY_NAME, SORT_BY_POPULATION, SEARCH_BY_NAME, FILTER_BY_ACTIVITY, RESET_FILTERS } from '../action-type';
+import { CLEAN_COUNTRY, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, GET_ACTIVITIES, CREATE_ACTIVITY, FILTER_BY_CONTINENT, SORT_BY_NAME, SORT_BY_POPULATION, SEARCH_BY_NAME, FILTER_BY_ACTIVITY, RESET_FILTERS, POST_MESSAGE, CLEAN_MESSAGE } from '../action-type';
 
 const initialState = {
   countries: [],
@@ -14,7 +14,8 @@ const initialState = {
     population: 0,
     activities: []
   },
-  activities: []
+  activities: [],
+  error: { type: '', message: '' }
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -104,6 +105,18 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         countries: countriesReversedByPopulation
       };
+    case POST_MESSAGE:
+      return {
+        ...state,
+        error: { type: action.payload.type, message: action.payload.message }
+      }
+
+    case CLEAN_MESSAGE:
+      return {
+        ...state,
+        error: { type: '', message: '' }
+      }
+
 
     default:
       return state;

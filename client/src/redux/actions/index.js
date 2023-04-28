@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, CLEAN_COUNTRY, GET_ACTIVITIES, CREATE_ACTIVITY, FILTER_BY_CONTINENT, SORT_BY_NAME, SORT_BY_POPULATION, SEARCH_BY_NAME, FILTER_BY_ACTIVITY, RESET_FILTERS } from '../action-type';
+import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, CLEAN_COUNTRY, GET_ACTIVITIES, CREATE_ACTIVITY, FILTER_BY_CONTINENT, SORT_BY_NAME, SORT_BY_POPULATION, SEARCH_BY_NAME, FILTER_BY_ACTIVITY, RESET_FILTERS, POST_MESSAGE, CLEAN_MESSAGE } from '../action-type';
 
 
 // Nuestras actions (action creators) devolverán un paquete de actions que nuestro reducer recibirá. 
@@ -60,16 +60,25 @@ const getActivities = () => {
     }
   }
 }
+
 const postActivity = (activity) => {
   return async function (dispatch) {
     try {
       let response = await axios.post('http://localhost:3001/activities', activity)
-      return dispatch({ type: CREATE_ACTIVITY, payload: response.data });
+      console.log(response)
+      dispatch({ type: CREATE_ACTIVITY, payload: response.data });
+      const message = { type: 'success', message: 'Activity created correctly' };
+      dispatch({ type: POST_MESSAGE, payload: message });
+      return message;
     } catch (error) {
       console.error(error);
+      const message = { type: 'error', message: error.response?.data?.error || 'Error creating activity' };
+      dispatch({ type: POST_MESSAGE, payload: message });
+      return message;
     }
   }
 }
+
 
 const filterCountriesByContinent = (continent) => {
   return async function (dispatch) {
@@ -108,6 +117,7 @@ const searchByName = (search) => {
       return dispatch({ type: SEARCH_BY_NAME, payload: response.data })
     } catch (error) {
       console.error(error)
+      return dispatch({ type: POST_MESSAGE, payload: { type: 'error', message: error.response?.data?.error || 'Error searching for countries' } });
     }
   }
 }
@@ -132,11 +142,21 @@ const resetFilters = () => {
   }
 }
 
+const cleanMessage = () => {
+  return async function (dispatch) {
+    try {
+      return dispatch({ type: CLEAN_MESSAGE })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
 
 
 
 
-export { getAllCountries, getCountryById, cleanCountry, getActivities, postActivity, filterCountriesByContinent, sortByName, sortByPopulation, searchByName, filterCountriesByActivitity, resetFilters }
+
+export { getAllCountries, getCountryById, cleanCountry, getActivities, postActivity, filterCountriesByContinent, sortByName, sortByPopulation, searchByName, filterCountriesByActivitity, resetFilters, cleanMessage }
 
 
 

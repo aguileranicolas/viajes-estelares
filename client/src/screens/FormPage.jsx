@@ -122,8 +122,8 @@ const FormPage = () => {
 							<input
 								className='inputRange'
 								type='range'
-								max={5}
 								min={1}
+								max={5}
 								id='activityDifficulty'
 								name='difficulty'
 								onChange={onChange}
